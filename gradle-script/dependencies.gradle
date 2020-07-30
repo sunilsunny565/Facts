@@ -40,9 +40,49 @@ ext {
     cardViewVersion = '1.0.0'
     cardViewPackage = 'androidx.cardview:cardview'
 
+    retrofitVersion = '2.5.0'
+    retrofitNetworkCallPackage = 'com.squareup.retrofit2:retrofit'
+    retrofitGsonConverterPackage = 'com.squareup.retrofit2:converter-gson'
+    retrofitRxjavaAdapterPackage = 'com.squareup.retrofit2:adapter-rxjava2'
+
+    okhttpVersion = '3.12.0'
+    okhttpPackage = 'com.squareup.okhttp3:logging-interceptor'
+
+    glideVersion = '4.10.0'
+    glidePackage = 'com.github.bumptech.glide:glide'
+
+    rxBindingVersion = '3.1.0'
+    rxBindingPackage = 'com.jakewharton.rxbinding3:rxbinding'
+
+    rxJava2Version = '2.2.2'
+    rxJava2Package = 'io.reactivex.rxjava2:rxjava'
+
+    rxAndroid2Version = '2.1.1'
+    rxAndroid2Package = 'io.reactivex.rxjava2:rxandroid'
+
+    roomVersion = '2.2.5'
+    roomRuntimePackage = 'androidx.room:room-runtime'
+    roomCompilerPackage = 'androidx.room:room-compiler'
+    roomKtxPackage = 'androidx.room:room-ktx'
+    roomRxjava2Package = 'androidx.room:room-rxjava2'
+
+    coroutineVersion = "1.3.0"
+    coroutinePackage = "org.jetbrains.kotlinx:kotlinx-coroutines-android"
+
+    viewModelVersion = '2.2.0'
+    viewModelPackage = 'androidx.lifecycle:lifecycle-viewmodel-ktx'
+
     androidGradleSupport = buildDependency(androidSupportPackage, androidGradleVersion)
     kotlinGradleSupport = buildDependency(kotlinSupportPackage, kotlinPluginVersion)
     kotlinSupport = buildDependency(kotlinPackage, kotlinPluginVersion)
+    okHttpInterceptor = buildDependency(okhttpPackage, okhttpVersion)
+    glide = buildDependency(glidePackage, glideVersion)
+    rxViewBinding = buildDependency(rxBindingPackage, rxBindingVersion)
+    rxJava2 = buildDependency(rxJava2Package, rxJava2Version)
+    rxAndroid2 = buildDependency(rxAndroid2Package, rxAndroid2Version)
+
+    kotlinCoroutine = buildDependency(coroutinePackage, coroutineVersion)
+    viewModelLifecycle = buildDependency(viewModelPackage, viewModelVersion)
 
     androidSupport = [
             appCompat      : buildDependency(appCompatPackage, supportVersion),
@@ -51,6 +91,18 @@ ext {
             materialDesign : buildDependency(materialPackage, supportVersion),
             cardView       : buildDependency(cardViewPackage, cardViewVersion),
             constrainLayout: buildDependency(constraintLayoutPackage, constraintLayoutVersion)
+    ]
+    retrofit = [
+            networkCall  : buildDependency(retrofitNetworkCallPackage, retrofitVersion),
+            gsonConverter: buildDependency(retrofitGsonConverterPackage, retrofitVersion),
+            rxJava       : buildDependency(retrofitRxjavaAdapterPackage, retrofitVersion)
+    ]
+
+    roomDB = [
+            runtime : buildDependency(roomRuntimePackage, roomVersion),
+            compiler: buildDependency(roomCompilerPackage, roomVersion),
+            ktx     : buildDependency(roomKtxPackage, roomVersion),
+            rxjava  : buildDependency(roomRxjava2Package, roomVersion)
     ]
 
 }

@@ -52,6 +52,36 @@ dependencies {
     implementation androidSupport.constrainLayout
     implementation androidSupport.recyclerView
 
+    // RxJava + RxAndroid
+    implementation rxJava2
+    implementation rxAndroid2
+
+    // RxBinding for UI
+    implementation rxViewBinding
+
+    // Room Database RxRoom
+    implementation roomDB.runtime
+    kapt roomDB.compiler
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation roomDB.ktx
+
+    // Glide - Image Loader
+    implementation glide
+
+    // HTTP Login Interceptor
+    implementation okHttpInterceptor
+
+    // Retrofit Api Calling Architecture
+    implementation retrofit.networkCall
+
+    // JSON to Response Class converter
+    implementation retrofit.gsonConverter
+    implementation retrofit.rxJava
+
+    implementation viewModelLifecycle
+    implementation kotlinCoroutine
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

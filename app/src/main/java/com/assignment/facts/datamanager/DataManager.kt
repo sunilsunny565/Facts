@@ -1,4 +1,7 @@
 package com.assignment.facts.datamanager
 
-class DataManager {
+import com.assignment.facts.networkadapter.api.apirequest.ApiRequest
+
+interface DataManager: ApiRequest {
+
 }
