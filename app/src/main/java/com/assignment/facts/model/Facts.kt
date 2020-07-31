@@ -1,11 +1,25 @@
 package com.assignment.facts.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.assignment.facts.database.constants.Columns
+import com.assignment.facts.database.constants.Tables
 import com.assignment.facts.networkadapter.apiconstants.ApiConstants
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = Tables.TABLE_FACTS)
 class Facts {
 
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = -1
+        get() = field ?: -1
+        set(value) {
+            field = value ?: -1
+        }
+
+    @ColumnInfo(name = Columns.ItemTitle, defaultValue = "")
     @SerializedName(ApiConstants.Title)
     @Expose
     var itemTitle: String? = ""
@@ -14,6 +28,7 @@ class Facts {
             field = value ?: ""
         }
 
+    @ColumnInfo(name = Columns.Description, defaultValue = "")
     @SerializedName(ApiConstants.Description)
     @Expose
     var itemDescription: String? = ""
@@ -22,6 +37,7 @@ class Facts {
             field = value ?: ""
         }
 
+    @ColumnInfo(name = Columns.ImageUrl, defaultValue = "")
     @SerializedName(ApiConstants.ImageUrl)
     @Expose
     var itemUrl: String? = ""
