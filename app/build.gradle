@@ -51,6 +51,7 @@ dependencies {
     implementation androidSupport.appCompat
     implementation androidSupport.constrainLayout
     implementation androidSupport.recyclerView
+    implementation androidSupport.materialDesign
 
     // RxJava + RxAndroid
     implementation rxJava2

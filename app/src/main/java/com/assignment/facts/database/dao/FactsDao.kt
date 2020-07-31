@@ -1,12 +1,14 @@
 package com.assignment.facts.database.dao
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.assignment.facts.database.constants.Tables
 import com.assignment.facts.model.Facts
 
+@Dao
 interface FactsDao {
 
     @Query("SELECT * FROM ${Tables.TABLE_FACTS}")
@@ -16,6 +18,5 @@ interface FactsDao {
     fun insertAll(callData: List<Facts>)
 
     @Query("DELETE FROM ${Tables.TABLE_FACTS}")
-    fun clearAllData() {
-    }
+    fun clearAllData()
 }

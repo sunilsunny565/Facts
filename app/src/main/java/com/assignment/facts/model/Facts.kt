@@ -10,14 +10,10 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = Tables.TABLE_FACTS)
-class Facts {
-
+data class Facts(
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = -1
-        get() = field ?: -1
-        set(value) {
-            field = value ?: -1
-        }
+    val id: Int
+) {
 
     @ColumnInfo(name = Columns.ItemTitle, defaultValue = "")
     @SerializedName(ApiConstants.Title)
