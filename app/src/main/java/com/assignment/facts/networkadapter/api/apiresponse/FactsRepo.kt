@@ -12,5 +12,7 @@ class FactsRepo {
 
     @SerializedName(ApiConstants.Rows)
     @Expose
-    private val grievanceTrackingList: List<Facts> = mutableListOf()
+    private val facts: List<Facts> = mutableListOf()
+
+    fun getFactsData() : List<Facts> = facts
 }
