@@ -38,6 +38,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -52,6 +55,7 @@ dependencies {
     implementation androidSupport.constrainLayout
     implementation androidSupport.recyclerView
     implementation androidSupport.materialDesign
+    implementation androidSupport.swipeToRefresh
 
     // RxJava + RxAndroid
     implementation rxJava2
@@ -69,6 +73,7 @@ dependencies {
 
     // Glide - Image Loader
     implementation glide
+    implementation coil
 
     // HTTP Login Interceptor
     implementation okHttpInterceptor

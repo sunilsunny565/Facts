@@ -36,9 +36,13 @@ ext {
     appCompatPackage = 'androidx.appcompat:appcompat'
     recyclerViewPackage = 'androidx.recyclerview:recyclerview'
     materialPackage = 'com.google.android.material:material'
+    swipeToRefreshPackage = 'androidx.swiperefreshlayout:swiperefreshlayout'
 
     cardViewVersion = '1.0.0'
     cardViewPackage = 'androidx.cardview:cardview'
+
+    coilVersion = '0.11.0'
+    coilPackage = 'io.coil-kt:coil'
 
     retrofitVersion = '2.5.0'
     retrofitNetworkCallPackage = 'com.squareup.retrofit2:retrofit'
@@ -77,6 +81,7 @@ ext {
     kotlinSupport = buildDependency(kotlinPackage, kotlinPluginVersion)
     okHttpInterceptor = buildDependency(okhttpPackage, okhttpVersion)
     glide = buildDependency(glidePackage, glideVersion)
+    coil = buildDependency(coilPackage, coilVersion)
     rxViewBinding = buildDependency(rxBindingPackage, rxBindingVersion)
     rxJava2 = buildDependency(rxJava2Package, rxJava2Version)
     rxAndroid2 = buildDependency(rxAndroid2Package, rxAndroid2Version)
@@ -90,7 +95,8 @@ ext {
             recyclerView   : buildDependency(recyclerViewPackage, supportVersion),
             materialDesign : buildDependency(materialPackage, supportVersion),
             cardView       : buildDependency(cardViewPackage, cardViewVersion),
-            constrainLayout: buildDependency(constraintLayoutPackage, constraintLayoutVersion)
+            constrainLayout: buildDependency(constraintLayoutPackage, constraintLayoutVersion),
+            swipeToRefresh :buildDependency(swipeToRefreshPackage, supportVersion)
     ]
     retrofit = [
             networkCall  : buildDependency(retrofitNetworkCallPackage, retrofitVersion),

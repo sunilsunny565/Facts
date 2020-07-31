@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
+import coil.transform.CircleCropTransformation
 import com.assignment.facts.R
 import com.assignment.facts.model.Facts
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item_facts.view.*
 
 class FactsItemAdapter : RecyclerView.Adapter<FactsItemAdapter.FactsItemViewHolder>() {
@@ -40,6 +43,15 @@ class FactsItemAdapter : RecyclerView.Adapter<FactsItemAdapter.FactsItemViewHold
         fun bindData(fact: Facts) {
             tvTitle.text = fact.itemTitle
             tvDescription.text = fact.itemDescription
+            if (!fact.imageUrl.isNullOrEmpty()) {
+                tvImageFact.visibility = View.VISIBLE
+                tvImageFact.load(fact.imageUrl){
+                    crossfade(true)
+                    placeholder(R.drawable.ic_launcher_foreground)
+                }
+            }
+            else
+                tvImageFact.visibility = View.GONE
         }
 
     }

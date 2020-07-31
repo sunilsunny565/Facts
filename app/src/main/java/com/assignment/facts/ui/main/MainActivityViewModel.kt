@@ -23,7 +23,11 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
     private val factsList: LiveData<MutableList<Facts>> =
         dataManager.getFactsList()
 
+    private var title: String = ""
+
     fun getFacts(): LiveData<MutableList<Facts>> = factsList
+
+    fun getAppBarTitle() = title
 
     fun getDataStream(): LiveData<NetworkRequestState> = loaderObservable
 
@@ -34,16 +38,16 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
                     NetworkRequestState.LoadingData
             }.subscribe({
                 try {
-
                     viewModelScope.launch {
                         io {
                             val data = it.getFactsData()
                             dataManager.clearData()
-                            dataManager.insertAllData(data)
+                            val filteredData =
+                                data.filter { it.imageUrl != "" || it.itemDescription != "" || it.itemTitle != "" }
+                            dataManager.insertAllData(filteredData)
+                            title = it.getTitle()
                         }
-                        loaderObservable.value = NetworkRequestState.SuccessResponse(
-                            it
-                        )
+                        loaderObservable.value = NetworkRequestState.SuccessResponse(it)
                     }
 
                 } catch (e: Exception) {

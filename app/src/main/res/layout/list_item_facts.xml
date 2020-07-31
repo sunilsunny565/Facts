@@ -7,7 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/card_background"
+        app:cardBackgroundColor="@color/cardBackground"
         app:cardCornerRadius="@dimen/dimen_2"
         app:cardUseCompatPadding="true"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,6 +20,7 @@
 
             <TextView
                 android:id="@+id/tvTitle"
+                style="@style/TextAppearance.Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
@@ -27,17 +28,21 @@
 
             <TextView
                 android:id="@+id/tvDescription"
-                android:layout_width="wrap_content"
+                style="@style/TextAppearance.Default"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_10"
-                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="@dimen/dimen_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgFact"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
             <ImageView
                 android:id="@+id/imgFact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="90dp"
+                android:scaleType="centerCrop"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintEnd_toStartOf="@+id/imgForward"
@@ -46,13 +51,16 @@
 
             <ImageView
                 android:id="@+id/imgForward"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:src="@drawable/forward_arrow"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

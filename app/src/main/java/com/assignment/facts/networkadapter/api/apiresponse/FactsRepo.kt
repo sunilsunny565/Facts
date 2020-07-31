@@ -8,11 +8,14 @@ import com.google.gson.annotations.SerializedName
 class FactsRepo {
     @SerializedName(ApiConstants.Title)
     @Expose
-    private var mainTitle: String? = null
+    private var mainTitle: String = ""
 
     @SerializedName(ApiConstants.Rows)
     @Expose
     private val facts: List<Facts> = mutableListOf()
 
-    fun getFactsData() : List<Facts> = facts
+    fun getFactsData(): List<Facts> = facts
+
+    fun getTitle(): String = mainTitle
+
 }

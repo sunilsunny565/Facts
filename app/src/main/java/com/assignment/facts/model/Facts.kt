@@ -36,7 +36,7 @@ data class Facts(
     @ColumnInfo(name = Columns.ImageUrl, defaultValue = "")
     @SerializedName(ApiConstants.ImageUrl)
     @Expose
-    var itemUrl: String? = ""
+    var imageUrl: String? = ""
         get() = field ?: ""
         set(value) {
             field = value ?: ""

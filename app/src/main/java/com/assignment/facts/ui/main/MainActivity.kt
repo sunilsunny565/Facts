@@ -16,6 +16,7 @@ import com.assignment.facts.utility.LOAD_ELEMENTS_WITH_DELAY
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.include_toolbar.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity<MainActivityViewModel>() {
@@ -27,6 +28,7 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
 
         try {
             initRecyclerView()
+            initRefreshLayout()
             Observable.timer(LOAD_ELEMENTS_WITH_DELAY, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread()).subscribe {
                     getObservableDataStream()
@@ -37,11 +39,18 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         }
     }
 
+    private fun initRefreshLayout() {
+        swpRefresh.setOnRefreshListener {
+            viewModel.getFactDetails(this)
+        }
+    }
+
     private fun initRecyclerView() {
         val rvPendingList = (rvFacts as RecyclerView)
         rvPendingList.apply {
             this.adapter = factsItemAdapter
-            this.layoutManager =LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL ,false)
+            this.layoutManager =
+                LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
         }
     }
 
@@ -49,14 +58,14 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         viewModel.getFacts().removeObservers(this)
         viewModel.getFacts().observe(this, Observer {
             factsItemAdapter.setData(it)
-            factsItemAdapter.notifyDataSetChanged()
+            toolBar.title = viewModel.getAppBarTitle()
+            swpRefresh.isRefreshing = false
         })
 
         viewModel.getDataStream().removeObservers(this)
         viewModel.getDataStream().observe(this, Observer {
 //            when (it) {
 //                is NetworkRequestState.NetworkNotAvailable -> TODO()
-//                is NetworkRequestState.Error -> TODO()
 //                is NetworkRequestState.ErrorResponse -> TODO()
 //                is NetworkRequestState.SuccessResponse<*> -> TODO()
 //            }
