@@ -92,7 +92,7 @@ ext {
             materialDesign : buildDependency(materialPackage, supportVersion),
             cardView       : buildDependency(cardViewPackage, cardViewVersion),
             constrainLayout: buildDependency(constraintLayoutPackage, constraintLayoutVersion),
-            swipeToRefresh :buildDependency(swipeToRefreshPackage, supportVersion)
+            swipeToRefresh : buildDependency(swipeToRefreshPackage, supportVersion)
     ]
     retrofit = [
             networkCall  : buildDependency(retrofitNetworkCallPackage, retrofitVersion),

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Facts</string>
     <string name="okay">Okay</string>
-    <string name="api_connection_error">Not able to connect with server.Please check you internet connection</string>
+    <string name="api_connection_error">Not able to connect with server. Please check you internet connection</string>
     <string name="error">Error!</string>
-    <string name="no_facts_to_show">No facts available now.\nPlease check again later.</string>
+    <string name="no_facts_to_show">No facts available for now.\nPlease check again later.</string>
     <string name="app_logo">App logo</string>
     <string name="fact_images_desc">ImageView for showing fact images</string>
     <string name="forward_arrow">Forward arrow</string>

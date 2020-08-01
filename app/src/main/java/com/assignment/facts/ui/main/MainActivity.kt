@@ -105,6 +105,8 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
                     tvNoItem.visibility = View.GONE
                     if (data.getFactsData().isEmpty() && factsItemAdapter.itemCount == 0) {
                         tvNoItem.visibility = View.VISIBLE
+                        if (viewModel.getAppBarTitle().isNotEmpty())
+                            toolBar.title = viewModel.getAppBarTitle()
                     }
                     progressBar.visibility = View.GONE
                     swpRefresh.isRefreshing = false
