@@ -41,6 +41,7 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
                     viewModelScope.launch {
                         io {
                             val data = it.getFactsData()
+                            data[0].mainTitle = it.getTitle()
                             dataManager.clearData()
                             val filteredData =
                                 data.filter { it.imageUrl != "" || it.itemDescription != "" || it.itemTitle != "" }

@@ -41,4 +41,11 @@ data class Facts(
         set(value) {
             field = value ?: ""
         }
+
+    @ColumnInfo(name = Columns.Title, defaultValue = "")
+    var mainTitle: String? = ""
+        get() = field ?: ""
+        set(value) {
+            field = value ?: ""
+        }
 }
