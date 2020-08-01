@@ -15,6 +15,7 @@ class AppDataManager private constructor(
     private val apiRequest: ApiRequest, private val dbManager: FactsDatabase
 ) : DataManager {
 
+    //Database calls
     override fun getFactsList(): LiveData<MutableList<Facts>> = factsDao.getAllFacts()
     override fun insertAllData(facts: List<Facts>) = factsDao.insertAll(facts)
     override fun clearData() = factsDao.clearAllData()

@@ -42,10 +42,11 @@
                 android:id="@+id/imgFact"
                 android:layout_width="@dimen/view_100"
                 android:layout_height="@dimen/view_90"
-                android:scaleType="centerCrop"
-                android:visibility="gone"
                 android:layout_marginTop="@dimen/dimen_10"
+                android:contentDescription="@string/fact_images_desc"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher"
+                android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/imgForward"
                 app:layout_constraintRight_toRightOf="@id/tvDescription"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -56,11 +57,12 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/dimen_10"
+                android:contentDescription="@string/forward_arrow"
                 android:src="@drawable/forward_arrow"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

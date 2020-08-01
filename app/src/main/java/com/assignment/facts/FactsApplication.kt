@@ -1,7 +1,6 @@
 package com.assignment.facts
 
 import android.app.Application
-import androidx.appcompat.app.AppCompatDelegate
 import com.assignment.facts.datamanager.AppDataManager
 import com.assignment.facts.datamanager.DataManager
 

@@ -22,8 +22,8 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : BaseActivity<MainActivityViewModel>() {
 
-
     private val factsItemAdapter by lazy { FactsItemAdapter() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,12 +40,14 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         }
     }
 
+    //Method for initializing swipe to refresh layout
     private fun initRefreshLayout() {
         swpRefresh.setOnRefreshListener {
             viewModel.getFactDetails(this)
         }
     }
 
+    //Method for initializing RecyclerView
     private fun initRecyclerView() {
         val rvPendingList = (rvFacts as RecyclerView)
         rvPendingList.apply {
@@ -55,6 +57,7 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         }
     }
 
+    //Method for observing the data stream
     private fun getObservableDataStream() {
         viewModel.getFacts().removeObservers(this)
         viewModel.getFacts().observe(this, Observer {

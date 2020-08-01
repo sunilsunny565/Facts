@@ -14,7 +14,6 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    private val TAG: String = RetrofitClient::class.java.simpleName
 
     private const val REQUEST_TIMEOUT:Long = 10
 

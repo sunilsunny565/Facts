@@ -73,7 +73,6 @@ dependencies {
 
     // Glide - Image Loader
     implementation glide
-    implementation coil
 
     // HTTP Login Interceptor
     implementation okHttpInterceptor
@@ -85,6 +84,7 @@ dependencies {
     implementation retrofit.gsonConverter
     implementation retrofit.rxJava
 
+    //Lifecycle view model libs
     implementation viewModelLifecycle
     implementation kotlinCoroutine
 

@@ -30,6 +30,7 @@ class FactsItemAdapter : RecyclerView.Adapter<FactsItemAdapter.FactsItemViewHold
         holder.bindData(dataList[position])
     }
 
+    //Method for setting the data in list
     fun setData(dataList: MutableList<Facts>) {
         this.dataList.apply {
             this.clear()

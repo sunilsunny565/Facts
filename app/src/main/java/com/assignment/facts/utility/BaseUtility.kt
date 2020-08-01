@@ -7,6 +7,7 @@ import com.assignment.facts.R
 
 object BaseUtility {
 
+    //Method for showing popups
     fun showAlertMessage(
         context: Context, @StringRes title: Int, @StringRes message: Int,
         @StringRes positiveTitle: Int = R.string.okay

@@ -56,7 +56,7 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
                 }
             }, {
                 loaderObservable.value =
-                    NetworkRequestState.ErrorResponse(it)
+                    NetworkRequestState.ErrorResponse
             }).autoDispose(disposables)
         }
     }

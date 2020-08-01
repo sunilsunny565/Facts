@@ -49,5 +49,6 @@ data class Facts(
             field = value ?: ""
         }
 
+    //variable for avoiding loading failed images again and again
     var isBadImage: Boolean = false
 }
