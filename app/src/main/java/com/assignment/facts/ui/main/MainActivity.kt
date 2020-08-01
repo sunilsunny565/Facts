@@ -71,29 +71,31 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
             when (it) {
                 is NetworkRequestState.LoadingData -> {
                     tvNoItem.visibility = View.GONE
-                    if (!swpRefresh.isRefreshing) {
+                    if (!swpRefresh.isRefreshing && factsItemAdapter.itemCount == 0) {
                         progressBar.visibility = View.VISIBLE
                     }
                 }
                 is NetworkRequestState.NetworkNotAvailable -> {
                     swpRefresh.isRefreshing = false
                     progressBar.visibility = View.GONE
-                    if (factsItemAdapter.itemCount == 0) {
-                        tvNoItem.visibility = View.VISIBLE
-                    }
                     BaseUtility.showAlertMessage(
                         this, R.string.error, R.string.api_connection_error
-                    )
+                    ).setOnDismissListener {
+                        if (factsItemAdapter.itemCount == 0) {
+                            tvNoItem.visibility = View.VISIBLE
+                        }
+                    }
                 }
                 is NetworkRequestState.ErrorResponse -> {
                     swpRefresh.isRefreshing = false
                     progressBar.visibility = View.GONE
-                    if (factsItemAdapter.itemCount == 0) {
-                        tvNoItem.visibility = View.VISIBLE
-                    }
                     BaseUtility.showAlertMessage(
                         this, R.string.error, R.string.api_connection_error
-                    )
+                    ).setOnDismissListener {
+                        if (factsItemAdapter.itemCount == 0) {
+                            tvNoItem.visibility = View.VISIBLE
+                        }
+                    }
                 }
                 is NetworkRequestState.SuccessResponse<*> -> {
                     val data = it.data as FactsRepo

@@ -48,4 +48,6 @@ data class Facts(
         set(value) {
             field = value ?: ""
         }
+
+    var isBadImage: Boolean = false
 }

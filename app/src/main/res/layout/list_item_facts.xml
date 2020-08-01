@@ -40,9 +40,10 @@
 
             <ImageView
                 android:id="@+id/imgFact"
-                android:layout_width="100dp"
-                android:layout_height="90dp"
+                android:layout_width="@dimen/view_100"
+                android:layout_height="@dimen/view_90"
                 android:scaleType="centerCrop"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/dimen_10"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintEnd_toStartOf="@+id/imgForward"
