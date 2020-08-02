@@ -15,6 +15,7 @@ abstract class BaseViewModel : ViewModel() {
         MutableLiveData<NetworkRequestState>()
     }
 
+    //Method for checking the network availability
     protected fun checkNetworkAvailability(context: Context): Boolean {
         if (!NetworkProvider.isConnected(context)) {
             loaderObservable.value = NetworkRequestState.NetworkNotAvailable

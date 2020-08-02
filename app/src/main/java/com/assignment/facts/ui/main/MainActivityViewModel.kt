@@ -31,6 +31,7 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
 
     fun getDataStream(): LiveData<NetworkRequestState> = loaderObservable
 
+    //Method for fetching the data from Api
     fun getFactDetails(context: Context) {
         if (checkNetworkAvailability(context)) {
             dataManager.getFacts().doOnSubscribe {

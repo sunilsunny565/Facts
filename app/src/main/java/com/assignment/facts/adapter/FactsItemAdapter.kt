@@ -39,6 +39,7 @@ class FactsItemAdapter : RecyclerView.Adapter<FactsItemAdapter.FactsItemViewHold
         notifyDataSetChanged()
     }
 
+    //View Holder
     inner class FactsItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvTitle: TextView = itemView.tvTitle
         private val tvDescription: TextView = itemView.tvDescription
