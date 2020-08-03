@@ -16,10 +16,6 @@ abstract class BaseActivity <VM : ViewModel> : AppCompatActivity() {
 
     protected val disposables: CompositeDisposable by lazy { CompositeDisposable() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(provideLayoutResource())
-    }
 
     override fun onDestroy() {
         if ((disposables.size() > 0) && !disposables.isDisposed) {
@@ -31,6 +27,4 @@ abstract class BaseActivity <VM : ViewModel> : AppCompatActivity() {
 
     abstract fun provideViewModel(): VM
 
-    @LayoutRes
-    abstract fun provideLayoutResource(): Int
 }

@@ -20,10 +20,10 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
         }
     }
 
-    private val factsList: LiveData<MutableList<Facts>> =
+    var factsList: LiveData<MutableList<Facts>> =
         dataManager.getFactsList()
 
-    private var title: String = ""
+    var title: String = ""
 
     fun getFacts(): LiveData<MutableList<Facts>> = factsList
 
@@ -42,8 +42,8 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
                     viewModelScope.launch {
                         io {
                             val data = it.getFactsData()
-                            if(data.isNotEmpty())
-                            data[0].mainTitle = it.getTitle()
+                            if (data.isNotEmpty())
+                                data[0].mainTitle = it.getTitle()
                             dataManager.clearData()
                             val filteredData =
                                 data.filter { it.imageUrl != "" || it.itemDescription != "" || it.itemTitle != "" }

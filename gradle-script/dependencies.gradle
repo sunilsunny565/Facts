@@ -73,6 +73,13 @@ ext {
     viewModelVersion = '2.2.0'
     viewModelPackage = 'androidx.lifecycle:lifecycle-viewmodel-ktx'
 
+    mockitoVersion = '2.19.0'
+    mockitoInLinePackage = 'org.mockito:mockito-inline'
+    mockitoCorePackage = 'org.mockito:mockito-core'
+
+    archCoreVersion = '2.1.0'
+    archCorePackage = 'androidx.arch.core:core-testing'
+
     androidGradleSupport = buildDependency(androidSupportPackage, androidGradleVersion)
     kotlinGradleSupport = buildDependency(kotlinSupportPackage, kotlinPluginVersion)
     kotlinSupport = buildDependency(kotlinPackage, kotlinPluginVersion)
@@ -105,6 +112,11 @@ ext {
             compiler: buildDependency(roomCompilerPackage, roomVersion),
             ktx     : buildDependency(roomKtxPackage, roomVersion),
             rxjava  : buildDependency(roomRxjava2Package, roomVersion)
+    ]
+    testing = [
+            mockitoInline: buildDependency(mockitoInLinePackage, mockitoVersion),
+            mockitoCore  : buildDependency(mockitoCorePackage, mockitoVersion),
+            archCore     : buildDependency(archCorePackage, archCoreVersion)
     ]
 
 }

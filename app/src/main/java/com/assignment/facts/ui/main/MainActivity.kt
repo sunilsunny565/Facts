@@ -2,11 +2,13 @@ package com.assignment.facts.ui.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.BindingAdapter
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.assignment.facts.R
 import com.assignment.facts.adapter.FactsItemAdapter
+import com.assignment.facts.databinding.ActivityMainBinding
 import com.assignment.facts.extensions.getViewModel
 import com.assignment.facts.extensions.rx.autoDispose
 import com.assignment.facts.networkadapter.api.apirequest.NetworkRequestState
@@ -26,10 +28,11 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val activityBinding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
+        activityBinding.viewModel = viewModel
+        activityBinding.adapter = factsItemAdapter
         try {
-            initRecyclerView()
-            initRefreshLayout()
             Observable.timer(LOAD_ELEMENTS_WITH_DELAY, TimeUnit.MILLISECONDS)
                 .observeOn(AndroidSchedulers.mainThread()).subscribe {
                     getObservableDataStream()
@@ -40,22 +43,6 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         }
     }
 
-    //Method for initializing swipe to refresh layout
-    private fun initRefreshLayout() {
-        swpRefresh.setOnRefreshListener {
-            viewModel.getFactDetails(this)
-        }
-    }
-
-    //Method for initializing RecyclerView
-    private fun initRecyclerView() {
-        val rvPendingList = (rvFacts as RecyclerView)
-        rvPendingList.apply {
-            this.adapter = factsItemAdapter
-            this.layoutManager =
-                LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-        }
-    }
 
     //Method for observing the data stream
     private fun getObservableDataStream() {
@@ -118,6 +105,11 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
     override fun provideViewModel(): MainActivityViewModel =
         getViewModel { MainActivityViewModel.getInstance(dataManager) }
 
+}
 
-    override fun provideLayoutResource(): Int = R.layout.activity_main
+@BindingAdapter("setAdapter")
+fun RecyclerView.bindRecyclerViewAdapter(adapter: RecyclerView.Adapter<*>) {
+    this.run {
+        this.adapter = adapter
+    }
 }

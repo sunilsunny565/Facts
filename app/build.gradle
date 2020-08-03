@@ -11,6 +11,10 @@ android {
     compileSdkVersion targetVersion
     buildToolsVersion buildVersion
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId appId
         minSdkVersion minVersion
@@ -88,6 +92,10 @@ dependencies {
     implementation viewModelLifecycle
     implementation kotlinCoroutine
 
+    //unit test libs
+    testImplementation testing.mockitoInline
+    testImplementation testing.mockitoCore
+    testImplementation testing.archCore
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
