@@ -51,4 +51,8 @@ data class Facts(
 
     //variable for avoiding loading failed images again and again
     var isBadImage: Boolean = false
+
+    //fun for avoiding objects with all empty parameters
+    fun filterData() =
+        !imageUrl.isNullOrEmpty() || !itemTitle.isNullOrEmpty() || !itemDescription.isNullOrEmpty()
 }

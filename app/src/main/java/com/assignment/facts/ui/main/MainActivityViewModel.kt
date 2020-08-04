@@ -46,7 +46,7 @@ class MainActivityViewModel(private val dataManager: DataManager) : BaseViewMode
                                 data[0].mainTitle = it.getTitle()
                             dataManager.clearData()
                             val filteredData =
-                                data.filter { it.imageUrl != "" || it.itemDescription != "" || it.itemTitle != "" }
+                                data.filter { it.filterData() }
                             dataManager.insertAllData(filteredData)
                             title = it.getTitle()
                         }

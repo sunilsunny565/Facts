@@ -11,10 +11,6 @@ android {
     compileSdkVersion targetVersion
     buildToolsVersion buildVersion
 
-    dataBinding {
-        enabled = true
-    }
-
     defaultConfig {
         applicationId appId
         minSdkVersion minVersion
@@ -24,10 +20,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     buildTypes {
         buildTypes.each { it.buildConfigField "String", "HOST_URL", "\"${hostUrl}\"" }
         buildTypes.each { it.buildConfigField "String", "DB_NAME", "\"${databaseName}\"" }
         buildTypes.each { it.buildConfigField "int", "DB_VERSION", "${databaseVersion}" }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

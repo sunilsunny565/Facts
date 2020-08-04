@@ -5,12 +5,12 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowAnimationStyle">@style/WindowAnimationStyle</item>
+<!--        <item name="android:windowAnimationStyle">@style/WindowAnimationStyle</item>--> <!--giving black screen in some devices-->
     </style>
 
-    <style name="WindowAnimationStyle">
-        <item name="android:windowEnterAnimation">@android:anim/linear_interpolator</item>
-    </style>
+<!--    <style name="WindowAnimationStyle">-->
+<!--        <item name="android:windowEnterAnimation">@android:anim/linear_interpolator</item>-->
+<!--    </style>-->
 
     <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Caption">
         <item name="textAllCaps">false</item>
