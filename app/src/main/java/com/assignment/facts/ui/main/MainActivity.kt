@@ -46,7 +46,6 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
 
     //Method for observing the data stream
     private fun getObservableDataStream() {
-        viewModel.getFacts().removeObservers(this)
         viewModel.getFacts().observe(this, Observer {
             factsItemAdapter.setData(it)
             if (viewModel.getAppBarTitle().isEmpty() && it.isNotEmpty()) {
@@ -56,7 +55,6 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
             }
         })
 
-        viewModel.getDataStream().removeObservers(this)
         viewModel.getDataStream().observe(this, Observer {
             when (it) {
                 is NetworkRequestState.LoadingData -> {
@@ -66,26 +64,12 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
                     }
                 }
                 is NetworkRequestState.NetworkNotAvailable -> {
-                    swpRefresh.isRefreshing = false
-                    progressBar.visibility = View.GONE
-                    BaseUtility.showAlertMessage(
-                        this, R.string.error, R.string.api_connection_error
-                    ).setOnDismissListener {
-                        if (factsItemAdapter.itemCount == 0) {
-                            tvNoItem.visibility = View.VISIBLE
-                        }
-                    }
+                    manageProgressBar()
+                    showErrorMessage()
                 }
                 is NetworkRequestState.ErrorResponse -> {
-                    swpRefresh.isRefreshing = false
-                    progressBar.visibility = View.GONE
-                    BaseUtility.showAlertMessage(
-                        this, R.string.error, R.string.api_connection_error
-                    ).setOnDismissListener {
-                        if (factsItemAdapter.itemCount == 0) {
-                            tvNoItem.visibility = View.VISIBLE
-                        }
-                    }
+                    manageProgressBar()
+                    showErrorMessage()
                 }
                 is NetworkRequestState.SuccessResponse<*> -> {
                     val data = it.data as FactsRepo
@@ -95,11 +79,27 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
                         if (viewModel.getAppBarTitle().isNotEmpty())
                             toolBar.title = viewModel.getAppBarTitle()
                     }
-                    progressBar.visibility = View.GONE
-                    swpRefresh.isRefreshing = false
+                    manageProgressBar()
                 }
             }
         })
+    }
+
+    //Method for managing the progress bar
+    private fun manageProgressBar() {
+        swpRefresh.isRefreshing = false
+        progressBar.visibility = View.GONE
+    }
+
+    //Method for showing the error message
+    private fun showErrorMessage() {
+        BaseUtility.showAlertMessage(
+            this, R.string.error, R.string.api_connection_error
+        ).setOnDismissListener {
+            if (factsItemAdapter.itemCount == 0) {
+                tvNoItem.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun provideViewModel(): MainActivityViewModel =
